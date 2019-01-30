@@ -65,7 +65,7 @@ describe 'App' do
     end
 
     it "displays the user's account page if username and password is given" do
-      @user = User.create(:username => "penelope", :password => "puppies")
+      @user = User.create(:username => "penelope", :password_digest => "puppies")
       visit '/login'
       fill_in "username", :with => "penelope"
       fill_in "password", :with => "puppies"
@@ -85,7 +85,7 @@ describe 'App' do
 
   describe "User Model" do
     it "responds to authenticate method from has_secure_password" do
-      @user = User.create(:username => "test123", :password => "test")
+      @user = User.create(:username => "test123", :password_digest => "test")
       expect(@user.authenticate("test")).to be_truthy
     end
   end
